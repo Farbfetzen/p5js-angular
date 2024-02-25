@@ -19,7 +19,7 @@ export class GreenComponent {
     @ViewChild(SketchComponent) sketch!: SketchComponent;
 
     createSketch = (p: p5) => {
-        let counter = 0;
+        // let counter = 0;
 
         p.setup = () => {
             p.createCanvas(300, 300);
@@ -27,10 +27,10 @@ export class GreenComponent {
 
         p.draw = () => {
             p.background(50, 150, 50);
-            counter++;
-            if (counter % 30 == 0) {
-                console.log("green: " + counter);
-            }
+            // counter++;
+            // if (counter % 30 == 0) {
+            //     console.log("green: " + counter);
+            // }
         };
     };
 }

@@ -22,7 +22,7 @@ export class BlueComponent implements AfterViewInit, OnDestroy {
     }
 
     createSketch = (p: p5) => {
-        let counter = 0;
+        // let counter = 0;
 
         p.setup = () => {
             p.createCanvas(300, 300).parent("canvas-container");
@@ -30,10 +30,10 @@ export class BlueComponent implements AfterViewInit, OnDestroy {
 
         p.draw = () => {
             p.background(this.backgroundColor);
-            counter++;
-            if (counter % 30 == 0) {
-                console.log("blue: " + counter);
-            }
+            // counter++;
+            // if (counter % 30 == 0) {
+            //     console.log("blue: " + counter);
+            // }
         };
     };
 }

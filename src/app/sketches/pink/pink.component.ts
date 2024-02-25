@@ -15,7 +15,7 @@ import { SketchComponent } from "src/app/sketches/sketch/sketch.component";
 })
 export class PinkComponent {
     createSketch = (p: p5) => {
-        let counter = 0;
+        // let counter = 0;
 
         p.setup = () => {
             p.createCanvas(300, 300);
@@ -23,10 +23,10 @@ export class PinkComponent {
 
         p.draw = () => {
             p.background(255, 192, 203);
-            counter++;
-            if (counter % 30 == 0) {
-                console.log("pink: " + counter);
-            }
+            // counter++;
+            // if (counter % 30 == 0) {
+            //     console.log("pink: " + counter);
+            // }
         };
     };
 }
