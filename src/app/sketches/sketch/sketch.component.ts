@@ -1,25 +1,34 @@
 import p5 from "p5";
 
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from "@angular/core";
+import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, booleanAttribute } from "@angular/core";
 
 @Component({
     selector: "app-sketch",
     standalone: true,
     imports: [],
-    template: `<div #canvasContainer></div>`,
+    template: ``,
     styles: `
-        div {
-            outline: 1px solid red;
+        :host {
+            display: block;
+            width: fit-content;
+        }
+        :host.center-horiz {
+            margin: 0 auto;
         }
     `,
 })
-export class SketchComponent implements AfterViewInit, OnDestroy {
+export class SketchComponent implements OnInit, OnDestroy {
     @Input({ required: true }) sketchClosure!: (p: p5) => void;
-    @ViewChild("canvasContainer") canvasContainer!: ElementRef<HTMLDivElement>;
+    @Input({ transform: booleanAttribute }) centeredHorizontally = false;
+    @HostBinding("class.center-horiz") get classCenterHoriz() {
+        return this.centeredHorizontally;
+    }
     sketch!: p5;
 
-    ngAfterViewInit(): void {
-        this.sketch = new p5(this.sketchClosure, this.canvasContainer.nativeElement);
+    constructor(private hostElement: ElementRef) {}
+
+    ngOnInit(): void {
+        this.sketch = new p5(this.sketchClosure, this.hostElement.nativeElement);
     }
 
     ngOnDestroy(): void {
@@ -28,6 +37,6 @@ export class SketchComponent implements AfterViewInit, OnDestroy {
 
     refresh(): void {
         this.sketch.remove();
-        this.sketch = new p5(this.sketchClosure, this.canvasContainer.nativeElement);
+        this.sketch = new p5(this.sketchClosure, this.hostElement.nativeElement);
     }
 }

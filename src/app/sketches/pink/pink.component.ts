@@ -10,7 +10,12 @@ import { SketchComponent } from "src/app/sketches/sketch/sketch.component";
     imports: [SketchComponent],
     template: `
         <p>pink works!</p>
-        <app-sketch [sketchClosure]="createSketch" />
+        <app-sketch [sketchClosure]="createSketch" centeredHorizontally="true" />
+    `,
+    styles: `
+        app-sketch {
+            box-shadow: 0 0 20px 15px #c1e3f6;
+        }
     `,
 })
 export class PinkComponent {
