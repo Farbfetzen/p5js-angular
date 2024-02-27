@@ -4,6 +4,6 @@ import { Component } from "@angular/core";
     selector: "app-main",
     standalone: true,
     imports: [],
-    template: `<p>main works!</p>`,
+    template: `<h1>main</h1>`,
 })
 export class MainComponent {}
