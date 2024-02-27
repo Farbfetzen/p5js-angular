@@ -7,7 +7,12 @@ import { PinkComponent } from "src/app/sketches/pink/pink.component";
 
 export const routes: Routes = [
     { path: "", component: MainComponent },
-    { path: "blue", component: BlueComponent },
-    { path: "pink", component: PinkComponent },
-    { path: "green", component: GreenComponent },
+    {
+        path: "sketch",
+        children: [
+            { path: "blue", component: BlueComponent },
+            { path: "pink", component: PinkComponent },
+            { path: "green", component: GreenComponent },
+        ],
+    },
 ];
