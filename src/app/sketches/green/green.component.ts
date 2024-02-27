@@ -8,10 +8,7 @@ import { SketchComponent } from "src/app/sketches/sketch/sketch.component";
     selector: "app-sketch-impl",
     standalone: true,
     imports: [SketchComponent],
-    template: `
-        <app-sketch [sketchFun]="createSketch" />
-        <button type="button" (click)="sketch.refresh()">refresh</button>
-    `,
+    template: ` <app-sketch [sketchFun]="createSketch" /> `,
     styles: ``,
 })
 export class GreenComponent {

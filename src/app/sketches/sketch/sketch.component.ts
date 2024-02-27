@@ -2,6 +2,8 @@ import p5 from "p5";
 
 import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, booleanAttribute } from "@angular/core";
 
+import { ToolbarService } from "src/app/toolbar/toolbar.service";
+
 @Component({
     selector: "app-sketch",
     standalone: true,
@@ -29,13 +31,21 @@ export class SketchComponent implements OnInit, OnDestroy {
 
     sketch!: p5;
 
-    constructor(private hostElement: ElementRef) {}
+    refreshButtonSubscription;
+
+    constructor(
+        private hostElement: ElementRef,
+        private toolbarService: ToolbarService,
+    ) {
+        this.refreshButtonSubscription = toolbarService.refreshButtonEvent$.subscribe(() => this.refresh());
+    }
 
     ngOnInit(): void {
         this.sketch = new p5(this.sketchFun, this.hostElement.nativeElement);
     }
 
     ngOnDestroy(): void {
+        this.refreshButtonSubscription.unsubscribe();
         this.sketch.remove();
     }
 
