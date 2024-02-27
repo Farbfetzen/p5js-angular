@@ -8,7 +8,7 @@ import { SketchComponent } from "src/app/sketches/sketch/sketch.component";
     selector: "app-pink",
     standalone: true,
     imports: [SketchComponent],
-    template: `<app-sketch [sketchClosure]="createSketch" centeredHorizontally="true" />`,
+    template: `<app-sketch [sketchFun]="createSketch" centeredHorizontally="true" />`,
     styles: `
         app-sketch {
             box-shadow: 0 0 20px 15px #c1e3f6;

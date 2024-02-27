@@ -18,7 +18,8 @@ import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, booleanAt
     `,
 })
 export class SketchComponent implements OnInit, OnDestroy {
-    @Input({ required: true }) sketchClosure!: (p: p5) => void;
+    /** A function that creates a sketch. */
+    @Input({ required: true }) sketchFun!: (p: p5) => void;
     @Input({ transform: booleanAttribute }) centeredHorizontally = false;
     @HostBinding("class.center-horiz") get classCenterHoriz() {
         return this.centeredHorizontally;
@@ -28,7 +29,7 @@ export class SketchComponent implements OnInit, OnDestroy {
     constructor(private hostElement: ElementRef) {}
 
     ngOnInit(): void {
-        this.sketch = new p5(this.sketchClosure, this.hostElement.nativeElement);
+        this.sketch = new p5(this.sketchFun, this.hostElement.nativeElement);
     }
 
     ngOnDestroy(): void {
@@ -37,6 +38,6 @@ export class SketchComponent implements OnInit, OnDestroy {
 
     refresh(): void {
         this.sketch.remove();
-        this.sketch = new p5(this.sketchClosure, this.hostElement.nativeElement);
+        this.sketch = new p5(this.sketchFun, this.hostElement.nativeElement);
     }
 }

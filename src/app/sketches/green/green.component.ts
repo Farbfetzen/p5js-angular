@@ -9,7 +9,7 @@ import { SketchComponent } from "src/app/sketches/sketch/sketch.component";
     standalone: true,
     imports: [SketchComponent],
     template: `
-        <app-sketch [sketchClosure]="createSketch" />
+        <app-sketch [sketchFun]="createSketch" />
         <button type="button" (click)="sketch.refresh()">refresh</button>
     `,
     styles: ``,
