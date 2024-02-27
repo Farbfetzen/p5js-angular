@@ -20,10 +20,13 @@ import { Component, ElementRef, HostBinding, Input, OnDestroy, OnInit, booleanAt
 export class SketchComponent implements OnInit, OnDestroy {
     /** A function that creates a sketch. */
     @Input({ required: true }) sketchFun!: (p: p5) => void;
+
+    /** Set true if the sketch component should be centered horizontally in its container. */
     @Input({ transform: booleanAttribute }) centeredHorizontally = false;
     @HostBinding("class.center-horiz") get classCenterHoriz() {
         return this.centeredHorizontally;
     }
+
     sketch!: p5;
 
     constructor(private hostElement: ElementRef) {}
