@@ -15,4 +15,8 @@ export class ToolbarService {
     get refreshButtonEvent$() {
         return this._refreshButtonEvent.asObservable();
     }
+
+    refreshButtonHasObservers(): boolean {
+        return this._refreshButtonEvent.observed;
+    }
 }
