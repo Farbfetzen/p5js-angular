@@ -24,10 +24,9 @@ export class SketchComponent implements OnInit, OnDestroy {
     @Input({ required: true }) sketchFun!: (p: p5) => void;
 
     /** Set true if the sketch component should be centered horizontally in its container. */
-    @Input({ transform: booleanAttribute }) centeredHorizontally = false;
-    @HostBinding("class.center-horiz") get classCenterHoriz() {
-        return this.centeredHorizontally;
-    }
+    @Input({ transform: booleanAttribute })
+    @HostBinding("class.center-horiz")
+    centeredHorizontally = false;
 
     sketch!: p5;
 
